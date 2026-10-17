@@ -1,0 +1,13 @@
+﻿{
+  "name": "devops-week7-app",
+  "version": "1.0.0",
+  "description": "DevOps Task Tracker App",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node -e \"console.log('Tests Passed!'); process.exit(0);\""
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

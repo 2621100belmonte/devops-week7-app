@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevOps Task Tracker</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f6f9; padding: 40px; margin: 0; }
+    .container { max-width: 600px; margin: 0 auto; background: white; padding: 25px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    h1 { color: #333; margin-top: 0; }
+    .badge { background: #007bff; color: white; padding: 3px 8px; border-radius: 4px; font-size: 14px; }
+    ul { list-style: none; padding: 0; margin-top: 20px; }
+    li { background: #f8f9fa; padding: 12px; margin-bottom: 8px; border-left: 4px solid #007bff; border-radius: 4px; display: flex; justify-content: space-between; }
+    .status { font-weight: bold; color: #28a745; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>DevOps Task Tracker <span class="badge">v1.0.0</span></h1>
+    <p>Automated deployment demo via GitHub Actions and Render.</p>
+    <ul id="task-list"></ul>
+  </div>
+  <script>
+    fetch('/api/tasks')
+      .then(res => res.json())
+      .then(tasks => {
+        const list = document.getElementById('task-list');
+        tasks.forEach(t => {
+          const li = document.createElement('li');
+          li.innerHTML = <span>${t.title}</span> <span class="status">${t.status}</span>;
+          list.appendChild(li);
+        });
+      });
+  </script>
+</body>
+</html>
